@@ -23,6 +23,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
+            $table->primary(['following_id', 'followed_id']);
             $table->unique(['following_id', 'followed_id']);
         });
     }

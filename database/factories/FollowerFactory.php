@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,18 @@ class FollowerFactory extends Factory
      */
     public function definition()
     {
+        $followingIds = User::all()->pluck('id');
+        $followedIds = User::all()->pluck('id');
+        $matrix = $followedIds->crossJoin($followingIds);
+        $keypair = $this->faker->unique()->randomElement($matrix);
+
+        while ($keypair[0] === $keypair[1]) {
+            $keypair = $this->faker->unique()->randomElement($matrix);
+        }
+
         return [
-            //
+            'following_id' => $keypair[0],
+            'followed_id' => $keypair[1],
         ];
     }
 }

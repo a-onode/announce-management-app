@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            UserSeeder::class,
+            AnnounceSeeder::class,
+            CommentSeeder::class,
+            FavoriteSeeder::class,
+            FollowerSeeder::class,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory(20)->create();
+        \App\Models\Announce::factory(100)->create();
+        \App\Models\Comment::factory(200)->create();
+        \App\Models\Favorite::factory(200)->create();
+        \App\Models\Follower::factory(200)->create();
     }
 }

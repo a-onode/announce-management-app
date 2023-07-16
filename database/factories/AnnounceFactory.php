@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class AnnounceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => User::all()->random()->id,
+            'text' => $this->faker->realText(),
+            'is_visible' => $this->faker->boolean(),
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Announce;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,15 @@ class FavoriteFactory extends Factory
      */
     public function definition()
     {
+        $userIds = User::pluck('id');
+        $announceIds = Announce::pluck('id');
+        $matrix = $userIds->crossJoin($announceIds);
+        $keypair = $this->faker->unique()->randomElement($matrix);
+        // dd($keypair);
+
         return [
-            //
+            'user_id' => $keypair[0],
+            'announce_id' => $keypair[1],
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Announce;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,9 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => User::all()->random()->id,
+            'announce_id' => Announce::all()->random()->id,
+            'text' => $this->faker->realText(),
         ];
     }
 }
