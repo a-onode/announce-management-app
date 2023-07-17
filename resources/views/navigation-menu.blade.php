@@ -15,6 +15,9 @@
                     <x-jet-nav-link href="{{ route('announces.index') }}" :active="request()->routeIs('announces.index')">
                         {{ __('周知一覧') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('announces.create') }}" :active="request()->routeIs('announces.create')">
+                        {{ __('周知投稿') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -137,6 +140,9 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('announces.index') }}" :active="request()->routeIs('announces.index')">
+                {{ __('周知一覧') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('announces.create') }}" :active="request()->routeIs('announces.create')">
                 {{ __('周知一覧') }}
             </x-jet-responsive-nav-link>
         </div>

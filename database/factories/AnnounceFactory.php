@@ -21,6 +21,7 @@ class AnnounceFactory extends Factory
             'user_id' => User::all()->random()->id,
             'name' => $this->faker->company(),
             'text' => $this->faker->realText(),
+            'type' => $this->faker->numberBetween(1, 3),
             'is_visible' => $this->faker->boolean(),
         ];
     }
