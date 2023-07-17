@@ -11,6 +11,7 @@ class Announce extends Model
 
     protected $fillable = [
         'user_id',
+        'name',
         'text',
         'file_path',
         'url',

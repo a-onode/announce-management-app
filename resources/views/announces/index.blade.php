@@ -16,17 +16,26 @@
                             </div>
 
                             <div class="min-w-0 flex-1">
-                                <div class="flex justify-between pb-2">
+                                <div class="flex justify-between">
                                     <div>
-                                        <p class="text-sm font-semibold text-gray-900">
-                                            <a href="#" class="hover:underline">{{ $announce->user->name }}</a>
-                                        </p>
-                                        <p class="text-sm text-gray-500">
-                                            <a href="#" class="hover:underline">{{ $announce->created_at->diffForHumans() }}</a>
-                                        </p>
+                                        <div class="flex pb-1">
+                                            <p class="text-sm font-semibold text-gray-900">
+                                                <a href="#" class="hover:underline">{{ $announce->user->name }}</a>
+                                            </p>
+                                            <p class="text-sm text-gray-500 pl-2">
+                                                <a href="#" class="hover:underline">{{ $announce->created_at->diffForHumans() }}</a>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-lg text-gray-800">
+                                                <a href="#" class="hover:underline">{{ $announce->name }}</a>
+                                            </p>
+                                        </div>
                                     </div>
+
                                     <x-dropdown-menu />
                                 </div>
+
                                 <div>
                                     <a href="{{ route('announces.show', ['announce' => $announce->id]) }}" class="text-sm text-gray-600">
                                         {{ $announce->text }}
