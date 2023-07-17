@@ -19,10 +19,11 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('name');
             $table->text('text');
             $table->string('file_path')->nullable();
             $table->text('url')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('authority');
             $table->boolean('is_visible');
             $table->timestamps();
         });

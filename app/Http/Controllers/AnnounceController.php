@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Announce;
+use App\Models\Follower;
+use Illuminate\Support\Facades\Auth;
 
 class AnnounceController extends Controller
 {
@@ -15,7 +17,15 @@ class AnnounceController extends Controller
      */
     public function index()
     {
-        //
+        $userIds = Follower::where('following_id', Auth::id())
+            ->select('followed_id')
+            ->get();
+        $userIds[] = Auth::id();
+        $announces = Announce::whereIn('user_id', $userIds)
+            ->latest()
+            ->get();
+
+        return view('announces.index', compact('announces'));
     }
 
     /**
@@ -25,7 +35,7 @@ class AnnounceController extends Controller
      */
     public function create()
     {
-        //
+        return view('announces.create');
     }
 
     /**
@@ -36,7 +46,25 @@ class AnnounceController extends Controller
      */
     public function store(StoreAnnounceRequest $request)
     {
-        //
+        $data = [
+            'user_id' => Auth::id(),
+            'name' => $request['name'],
+            'text' => $request['text'],
+            'type' => $request['type'],
+            'authority' => intval($request['type']),
+            'url' => $request['url'],
+            'is_visible' => 1,
+        ];
+
+        if (!is_null($request['url'])) {
+            $data['url'] = $request['url'];
+        }
+
+        Announce::create($data);
+
+        session()->flash('message', '周知を投稿しました。');
+
+        return to_route('announces.index');
     }
 
     /**

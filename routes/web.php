@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AnnounceController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resources([
+    'users' => UserController::class,
+    'announces' => AnnounceController::class,
+    'comments' => CommentController::class,
+    'favorites' => FavoriteController::class,
+    'followers' => FollowerController::class,
+]);
 
 Route::middleware([
     'auth:sanctum',

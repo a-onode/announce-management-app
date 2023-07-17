@@ -11,24 +11,25 @@ class Announce extends Model
 
     protected $fillable = [
         'user_id',
+        'name',
         'text',
         'file_path',
         'url',
-        'status',
+        'authority',
         'is_visible',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function favorite()
+    public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }

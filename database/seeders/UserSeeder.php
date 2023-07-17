@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'test@test.com',
             'tel' => '08011112222',
             'password' => Hash::make('password123'),
+            'role' => 5,
         ]);
     }
 }
