@@ -30,6 +30,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'tel' => $this->faker->phoneNumber(),
             'password' => $this->faker->password(),
+            'role' => $this->faker->numberBetween(1, 5),
             'birthday' => $this->faker->date('Y-m-d'),
             'gender' => $this->faker->numberBetween(1, 3),
             'two_factor_secret' => null,

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('text');
             $table->string('file_path')->nullable();
             $table->text('url')->nullable();
-            $table->tinyInteger('type');
+            $table->tinyInteger('authority');
             $table->boolean('is_visible');
             $table->timestamps();
         });

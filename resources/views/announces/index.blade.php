@@ -8,6 +8,9 @@
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+                <x-flash-message />
+
                 @foreach ($announces as $announce)
                     <div class="bg-white px-4 py-5 sm:px-6">
                         <div class="flex space-x-3">

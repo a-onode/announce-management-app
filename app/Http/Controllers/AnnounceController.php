@@ -46,7 +46,25 @@ class AnnounceController extends Controller
      */
     public function store(StoreAnnounceRequest $request)
     {
-        //
+        $data = [
+            'user_id' => Auth::id(),
+            'name' => $request['name'],
+            'text' => $request['text'],
+            'type' => $request['type'],
+            'authority' => intval($request['type']),
+            'url' => $request['url'],
+            'is_visible' => 1,
+        ];
+
+        if (!is_null($request['url'])) {
+            $data['url'] = $request['url'];
+        }
+
+        Announce::create($data);
+
+        session()->flash('message', '周知を投稿しました。');
+
+        return to_route('announces.index');
     }
 
     /**

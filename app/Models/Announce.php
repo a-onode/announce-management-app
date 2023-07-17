@@ -15,7 +15,7 @@ class Announce extends Model
         'text',
         'file_path',
         'url',
-        'status',
+        'authority',
         'is_visible',
     ];
 
