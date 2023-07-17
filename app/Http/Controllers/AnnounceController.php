@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Announce;
+use App\Models\Follower;
+use Illuminate\Support\Facades\Auth;
 
 class AnnounceController extends Controller
 {
@@ -15,7 +17,15 @@ class AnnounceController extends Controller
      */
     public function index()
     {
-        //
+        $userIds = Follower::where('following_id', Auth::id())
+            ->select('followed_id')
+            ->get();
+        $userIds[] = Auth::id();
+        $announces = Announce::whereIn('user_id', $userIds)
+            ->latest()
+            ->get();
+
+        return view('announces.index', compact('announces'));
     }
 
     /**

@@ -18,17 +18,17 @@ class Announce extends Model
         'is_visible',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function favorite()
+    public function favorites()
     {
         return $this->hasMany(Favorite::class);
     }
