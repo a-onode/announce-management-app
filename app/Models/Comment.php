@@ -15,12 +15,12 @@ class Comment extends Model
         'text',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function announces()
+    public function announce()
     {
         return $this->belongsTo(Announce::class);
     }
