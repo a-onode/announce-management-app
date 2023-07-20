@@ -73,9 +73,11 @@ class AnnounceController extends Controller
      * @param  \App\Models\Announce  $announce
      * @return \Illuminate\Http\Response
      */
-    public function show(Announce $announce)
+    public function show($announce)
     {
-        //
+        $announce = Announce::findOrFail($announce);
+
+        return view('announces.show', compact('announce'));
     }
 
     /**

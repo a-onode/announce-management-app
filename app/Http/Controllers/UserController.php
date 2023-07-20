@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Announce;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,7 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::findOrFail(Auth::id());
+        $announces = Announce::where('user_id', Auth::id())
+            ->latest()
+            ->get();
+
+        return view('users.index', compact('user', 'announces'));
     }
 
     /**

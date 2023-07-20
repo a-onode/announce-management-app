@@ -31,7 +31,7 @@
                                         </div>
                                         <div>
                                             <p class="font-semibold text-lg text-gray-800">
-                                                <a href="#" class="hover:underline">{{ $announce->name }}</a>
+                                                <a href="{{ route('announces.show', ['announce' => $announce->id]) }}" class="hover:underline">{{ $announce->name }}</a>
                                             </p>
                                         </div>
                                     </div>
