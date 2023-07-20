@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('announces.create') }}" :active="request()->routeIs('announces.create')">
                         {{ __('周知投稿') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('users.index', ['user', Auth::id()]) }}" :active="request()->routeIs('users.index')">
+                        {{ __('マイページ') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -143,7 +146,10 @@
                 {{ __('周知一覧') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('announces.create') }}" :active="request()->routeIs('announces.create')">
-                {{ __('周知一覧') }}
+                {{ __('周知投稿') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                {{ __('マイページ') }}
             </x-jet-responsive-nav-link>
         </div>
 

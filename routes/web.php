@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('users')->group(function () {
+    Route::get('/mypage/{$user}', [UserController::class, 'mypage'])
+        ->name('users.mypage');
+});
+
 Route::resources([
     'users' => UserController::class,
     'announces' => AnnounceController::class,
