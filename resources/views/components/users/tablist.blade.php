@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
 
-                                <x-dropdown-menu />
+                                @livewire('dropdown-menu', ['announce' => $announce])
                             </div>
 
                             <div>
