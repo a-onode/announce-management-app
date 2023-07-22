@@ -6,6 +6,7 @@ use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Announce;
 use App\Models\Follower;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class AnnounceController extends Controller
@@ -73,9 +74,9 @@ class AnnounceController extends Controller
      * @param  \App\Models\Announce  $announce
      * @return \Illuminate\Http\Response
      */
-    public function show($announce)
+    public function show(Announce $announce)
     {
-        $announce = Announce::findOrFail($announce);
+        $announce = Announce::findOrFail($announce->id);
 
         return view('announces.show', compact('announce'));
     }
@@ -111,6 +112,14 @@ class AnnounceController extends Controller
      */
     public function destroy(Announce $announce)
     {
-        //
+        $prevUrl = url()->previous();
+        $prevRouteName = app('router')->getRoutes()->match(app('request')->create($prevUrl))->getName();
+
+        $announce = Announce::findOrfail($announce->id);
+        $announce->delete();
+
+        session()->flash('message', '周知を削除しました。');
+
+        return $prevRouteName === 'announces.show' ? to_route('announces.index') : redirect()->back();
     }
 }
