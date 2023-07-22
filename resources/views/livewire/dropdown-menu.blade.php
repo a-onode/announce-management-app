@@ -72,7 +72,7 @@
                                     <label for="name" class="sr-only">件名</label>
                                     <input type="text" name="name" id="name" class="w-full border-0 text-lg font-medium pl-0 focus:ring-0" value="{{ $announce->name }}" readonly>
                                     <label for="text" class="sr-only">本文</label>
-                                    <textarea rows="10" name="text" id="text" class="w-full resize-none border-0 py-0 text-gray-500 sm:text-sm sm:leading-6 focus:ring-0" readonly>{{ $announce->text }}</textarea>
+                                    <textarea name="text" id="text" class="w-full resize-none border-0 py-0 text-gray-500 sm:text-sm sm:leading-6 focus:ring-0" readonly>{{ $announce->text }}</textarea>
                                 </div>
                             </div>
                         </div>

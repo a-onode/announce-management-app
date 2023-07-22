@@ -1281,6 +1281,9 @@ select {
 .h-px {
   height: 1px;
 }
+.h-auto {
+  height: auto;
+}
 .max-h-56 {
   max-height: 14rem;
 }
