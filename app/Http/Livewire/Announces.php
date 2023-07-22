@@ -13,7 +13,7 @@ class Announces extends Component
     public function render()
     {
         return view('livewire.announces', [
-            'announces' => Announce::paginate(10),
+            'announces' => Announce::latest()->paginate(10),
         ]);
     }
 }
