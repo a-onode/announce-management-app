@@ -7,16 +7,28 @@ use Livewire\Component;
 class DropdownMenu extends Component
 {
     public $announce;
-    public $isVisible = false;
+    public $isVisibleDropdownMenu = false;
+    public $isVisibleDeleteModal = false;
 
     public function mount($announce)
     {
         $this->announce = $announce;
     }
 
-    public function hidden()
+    public function closeDropdownMenu()
     {
-        $this->isVisible = false;
+        $this->isVisibleDropdownMenu = false;
+    }
+
+    public function openDeleteModal()
+    {
+        $this->isVisibleDropdownMenu = false;
+        $this->isVisibleDeleteModal = true;
+    }
+
+    public function closeDeleteModal()
+    {
+        $this->isVisibleDeleteModal = false;
     }
 
     public function render()
