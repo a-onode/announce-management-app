@@ -1685,6 +1685,9 @@ select {
 .border-r {
   border-right-width: 1px;
 }
+.border-t-2 {
+  border-top-width: 2px;
+}
 .border-dashed {
   border-style: dashed;
 }
@@ -2033,6 +2036,12 @@ select {
 }
 .pl-0 {
   padding-left: 0px;
+}
+.pb-8 {
+  padding-bottom: 2rem;
+}
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 .text-left {
   text-align: left;
@@ -2994,8 +3003,16 @@ select {
     margin-top: 0px;
   }
 
+  .md\:-mt-px {
+    margin-top: -1px;
+  }
+
   .md\:block {
     display: block;
+  }
+
+  .md\:flex {
+    display: flex;
   }
 
   .md\:grid {
