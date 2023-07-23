@@ -46,7 +46,7 @@ class AnnounceController extends Controller
      */
     public function store(StoreAnnounceRequest $request)
     {
-        //
+        // app/Http/Livewire/AnnounceCreate.phpへ移行済
     }
 
     /**
