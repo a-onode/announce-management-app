@@ -11,8 +11,8 @@ class AnnounceCreate extends Component
     public $name;
     public $text;
     public $url;
-    public $type;
-    public $authority;
+    public $type = 1;
+    public $authority = 1;
 
     protected $rules = [
         'name' => 'required',
