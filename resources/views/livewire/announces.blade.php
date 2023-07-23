@@ -27,7 +27,7 @@
 
                 <div>
                     <a href="{{ route('announces.show', ['announce' => $announce->id]) }}" class="text-sm text-gray-600">
-                        {{ $announce->text }}
+                        {!! nl2br(e($announce->text)) !!}
                     </a>
                 </div>
 
