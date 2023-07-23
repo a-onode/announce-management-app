@@ -22,6 +22,7 @@ class AnnounceFactory extends Factory
             'name' => $this->faker->company(),
             'text' => $this->faker->realText(),
             'authority' => $this->faker->numberBetween(1, 5),
+            'type' => $this->faker->numberBetween(1, 4),
             'is_visible' => $this->faker->boolean(),
         ];
     }
