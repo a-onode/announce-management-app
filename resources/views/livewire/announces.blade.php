@@ -1,9 +1,8 @@
 @foreach ($announces as $announce)
     <div class="bg-white px-4 py-5 sm:px-6">
         <div class="flex space-x-3">
-            <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-            </div>
+
+            @livewire('rounded-avatar', ['announce' => $announce])
 
             <div class="min-w-0 flex-1">
                 <div class="flex justify-between">
@@ -28,7 +27,7 @@
 
                 <div>
                     <a href="{{ route('announces.show', ['announce' => $announce->id]) }}" class="text-sm text-gray-600">
-                        {{ $announce->text }}
+                        {!! nl2br(e($announce->text)) !!}
                     </a>
                 </div>
 
