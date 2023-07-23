@@ -6,7 +6,6 @@ use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Announce;
 use App\Models\Follower;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class AnnounceController extends Controller

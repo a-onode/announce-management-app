@@ -31,6 +31,11 @@
                         {{ $announce->text }}
                     </a>
                 </div>
+
+                @if ($announce->url)
+                    @livewire('external-link', ['announce' => $announce])
+                @endif
+
             </div>
 
         </div>
