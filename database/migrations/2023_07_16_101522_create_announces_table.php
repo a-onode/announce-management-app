@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('file_path')->nullable();
             $table->text('url')->nullable();
             $table->tinyInteger('authority');
+            $table->tinyInteger('type');
             $table->boolean('is_visible');
             $table->timestamps();
         });

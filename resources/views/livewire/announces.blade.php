@@ -15,8 +15,9 @@
                                 <a href="#" class="hover:underline">{{ $announce->created_at->diffForHumans() }}</a>
                             </p>
                         </div>
-                        <div>
-                            <p class="font-semibold text-lg text-gray-800">
+                        <div class="flex pb-1">
+                            <x-announces.badge :announce-type="$announce->type" />
+                            <p class="font-semibold text-lg text-gray-800 pl-1">
                                 <a href="{{ route('announces.show', ['announce' => $announce->id]) }}" class="hover:underline">{{ $announce->name }}</a>
                             </p>
                         </div>
