@@ -21,7 +21,8 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('name');
             $table->text('text');
-            $table->string('file_path')->nullable();
+            $table->string('file1')->nullable();
+            $table->string('file2')->nullable();
             $table->text('url')->nullable();
             $table->tinyInteger('authority');
             $table->tinyInteger('type');

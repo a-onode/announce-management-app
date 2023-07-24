@@ -33,6 +33,8 @@ Route::resources([
     'comments' => CommentController::class,
     'favorites' => FavoriteController::class,
     'followers' => FollowerController::class,
+], [
+    'except' => ['annonces.store']
 ]);
 
 Route::middleware([
