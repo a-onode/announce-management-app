@@ -3,14 +3,20 @@
 namespace App\Http\Livewire;
 
 use App\Models\Announce;
+use App\Services\ImageService;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 
 class AnnounceCreate extends Component
 {
+    use WithFileUploads;
+
     public $name;
     public $text;
     public $url;
+    public $file1;
+    public $file2;
     public $type = 1;
     public $authority = 1;
     public $isVisible = false;
@@ -20,6 +26,8 @@ class AnnounceCreate extends Component
         'name' => 'required',
         'text' => 'required',
         'url' => 'nullable|url',
+        'file1' => 'nullable',
+        'file2' => 'nullable',
     ];
 
     protected $messages = [
@@ -47,9 +55,23 @@ class AnnounceCreate extends Component
             'is_visible' => intval($this->isVisible),
         ];
 
+        if (!is_null($this->file1)) {
+            $fileNameToStore = ImageService::upload($this->file1);
+
+            $data['file1'] = $fileNameToStore;
+        }
+
+        if (!is_null($this->file2)) {
+            $fileNameToStore = ImageService::upload($this->file2);
+
+            $data['file2'] = $fileNameToStore;
+        }
+
         if (!is_null($this->url)) {
             $data['url'] = $this->url;
         }
+
+
 
         Announce::create($data);
 
