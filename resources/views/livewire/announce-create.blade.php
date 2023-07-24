@@ -112,9 +112,9 @@
                     <span class="flex flex-grow flex-col">
                         <span class="text-sm font-medium leading-6 text-gray-900" id="availability-label">非公開にする</span>
                     </span>
-                    <button type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="availability-label"
-                        aria-describedby="availability-description">
-                        <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+                    <button type="button" wire:click="$toggle('isVisible')" class="{{ $isVisible ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out" role="switch" aria-checked="{{ $isVisible }}"
+                        aria-labelledby="availability-label" aria-labelledby="availability-label" aria-describedby="availability-description">
+                        <span aria-hidden="true" class="{{ $isVisible ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
                     </button>
                 </div>
 
@@ -122,12 +122,11 @@
                     <span class="flex flex-grow flex-col">
                         <span class="text-sm font-medium leading-6 text-gray-900" id="availability-label">Slackへ通知する</span>
                     </span>
-                    <button type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="availability-label"
-                        aria-describedby="availability-description">
-                        <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+                    <button type="button" wire:click="$toggle('isSlack')" class="{{ $isSlack ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out" role="switch" aria-checked="{{ $isSlack }}"
+                        aria-labelledby="availability-label" aria-describedby="availability-description">
+                        <span aria-hidden="true" class="{{ $isSlack ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
                     </button>
                 </div>
-
             </div>
         </div>
     </div>

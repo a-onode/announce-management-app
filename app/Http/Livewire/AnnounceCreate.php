@@ -13,6 +13,8 @@ class AnnounceCreate extends Component
     public $url;
     public $type = 1;
     public $authority = 1;
+    public $isVisible = false;
+    public $isSlack = false;
 
     protected $rules = [
         'name' => 'required',
@@ -42,7 +44,7 @@ class AnnounceCreate extends Component
             'type' => intval($this->type),
             'authority' => intval($this->authority),
             'url' => $this->url,
-            'is_visible' => 1,
+            'is_visible' => intval($this->isVisible),
         ];
 
         if (!is_null($this->url)) {
