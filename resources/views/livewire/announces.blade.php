@@ -32,6 +32,10 @@
                     </a>
                 </div>
 
+                @if ($announce->file1 || $announce->file2)
+                    @livewire('images', ['announce' => $announce])
+                @endif
+
                 @if ($announce->url)
                     @livewire('external-link', ['announce' => $announce])
                 @endif
