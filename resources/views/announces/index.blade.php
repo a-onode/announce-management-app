@@ -11,7 +11,14 @@
 
                 <x-flash-message />
 
-                @livewire('announces', ['announces' => $announces])
+                @foreach ($announces as $announce)
+                    @livewire('announces', ['announce' => $announce])
+                @endforeach
+
+                <div class="bg-white px-4 pt-4 pb-6 sm:px-6">
+                    {{ $announces->links('vendor.livewire.tailwind2') }}
+                </div>
+
             </div>
         </div>
     </div>
