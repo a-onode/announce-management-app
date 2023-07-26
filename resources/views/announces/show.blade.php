@@ -41,7 +41,7 @@
                             @endforeach
                         </ul>
 
-                        <x-comments.textarea />
+                        @livewire('comment.textarea', ['announce' => $announce])
 
                     </div>
                 </div>
