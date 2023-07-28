@@ -1,7 +1,7 @@
 <div class="bg-white px-4 py-5 sm:px-6">
     <div class="flex space-x-3">
 
-        @livewire('rounded-avatar', ['announce' => $announce])
+        @livewire('rounded-avatar', ['user' => $announce->user])
 
         <div class="min-w-0 flex-1">
             <div class="flex justify-between">

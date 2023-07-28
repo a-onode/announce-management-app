@@ -6,11 +6,11 @@ use Livewire\Component;
 
 class RoundedAvatar extends Component
 {
-    public $announce;
+    public $user;
 
-    public function mount($announce)
+    public function mount($user)
     {
-        $this->announce = $announce;
+        $this->user = $user;
     }
     public function render()
     {
