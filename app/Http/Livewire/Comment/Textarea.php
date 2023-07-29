@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Comment;
 
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class Announces extends Component
+class Textarea extends Component
 {
-    use WithPagination;
-
     public $announce;
 
     public function mount($announce)
@@ -18,6 +15,6 @@ class Announces extends Component
 
     public function render()
     {
-        return view('livewire.announces');
+        return view('livewire.comment.textarea');
     }
 }

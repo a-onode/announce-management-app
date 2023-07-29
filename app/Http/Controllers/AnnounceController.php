@@ -23,7 +23,7 @@ class AnnounceController extends Controller
         $userIds[] = Auth::id();
         $announces = Announce::whereIn('user_id', $userIds)
             ->latest()
-            ->get();
+            ->paginate(10);
 
         return view('announces.index', compact('announces'));
     }
