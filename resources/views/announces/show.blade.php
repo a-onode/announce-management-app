@@ -42,7 +42,7 @@
                                                 </div>
 
                                                 <div class="mt-2 text-sm text-gray-700">
-                                                    <p>{{ $comment->text }}</p>
+                                                    <p>{!! nl2br(e($comment->text)) !!}</p>
                                                 </div>
                                             </div>
                                         </div>

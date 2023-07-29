@@ -39,6 +39,10 @@
                 @livewire('external-link', ['announce' => $announce])
             @endif
 
+            @if (!$announce->comments->isEmpty() && !request()->routeIs('announces.show'))
+                <x-comments.counter :announce="$announce" />
+            @endif
+
         </div>
 
     </div>
