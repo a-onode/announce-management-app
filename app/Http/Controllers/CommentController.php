@@ -46,7 +46,15 @@ class CommentController extends Controller
 
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
-        //
+        $announce = Announce::findOrFail($request['announce_id']);
+        $comment = Comment::findOrFail($comment->id);
+
+        $comment->text = $request['text'];
+        $comment->save();
+
+        session()->flash('message', 'コメントを編集しました。');
+
+        return to_route('announces.show', compact('announce'));
     }
 
     public function destroy(Comment $comment, Request $request)
