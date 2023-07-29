@@ -38,7 +38,16 @@
                             </div>
                         </div>
                     </div>
+
                     <x-users.tablist :user="$user" :announces="$announces" />
+
+                    @foreach ($announces as $announce)
+                        @livewire('announces', ['announce' => $announce])
+                    @endforeach
+
+                    <div class="bg-white px-4 sm:px-6">
+                        {{ $announces->links('vendor.livewire.tailwind2') }}
+                    </div>
                 </div>
             </div>
         </div>

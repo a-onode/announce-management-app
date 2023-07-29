@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = User::findOrFail(Auth::id());
         $announces = Announce::where('user_id', Auth::id())
             ->latest()
-            ->get();
+            ->paginate(10);
 
         return view('users.index', compact('user', 'announces'));
     }
