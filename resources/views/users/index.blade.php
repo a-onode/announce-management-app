@@ -11,12 +11,12 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
                         <div>
-                            <img class="h-32 w-full object-cover lg:h-48" src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80">
+                            <img class="h-32 w-full object-cover lg:h-48" src="{{ asset('storage/images/backgrounds/' . Auth::user()->background_image) }}">
                         </div>
                         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                             <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                                 <div class="flex">
-                                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32 bg-white" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80">
+                                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32 bg-white" src="{{ asset('storage/images/users/' . Auth::user()->profile_image) }}">
                                 </div>
                                 <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                                     <div class="mt-6 min-w-0 flex-1 sm:hidden md:block">

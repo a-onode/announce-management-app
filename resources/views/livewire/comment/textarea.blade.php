@@ -1,5 +1,5 @@
 <div class="mt-6 flex gap-x-3">
-    <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" class="h-8 w-8 flex-none rounded-md bg-gray-50">
+    <img src="{{ asset('storage/images/users/' . Auth::user()->profile_image) }}" class="h-8 w-8 flex-none rounded-md bg-gray-50">
 
     <form action="{{ route('comments.store') }}" method="post" class="relative flex-auto">
         @csrf

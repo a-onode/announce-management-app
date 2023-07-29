@@ -21,7 +21,7 @@
                                     <div class="relative pb-2">
                                         <div class="relative flex items-start space-x-3">
                                             <div class="relative">
-                                                <img class="h-10 w-10 rounded-md" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                                <img class="h-10 w-10 rounded-md" src="{{ asset('storage/images/users/' . $comment->user->profile_image) }}">
                                                 <span class="absolute -bottom-0.5 -right-1 rounded-tl bg-white px-0.5 py-px">
                                                     <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                         <path fill-rule="evenodd"
