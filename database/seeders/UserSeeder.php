@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
             'tel' => '08011112222',
             'password' => Hash::make('password123'),
             'role' => 5,
+            'profile_image' => 'testuser.png',
+            'background_image' => 'colorful.jpg',
         ]);
     }
 }

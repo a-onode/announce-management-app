@@ -37,8 +37,8 @@ class UserFactory extends Factory
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
             'introduction' => $this->faker->sentence(),
-            'profile_photo_path' => 'user.png',
-            'background_photo_path' => null,
+            'profile_image' => 'user.png',
+            'background_image' => 'beach.jpg',
             // 'current_team_id' => null,
         ];
     }
