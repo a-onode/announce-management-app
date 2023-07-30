@@ -2072,6 +2072,14 @@ select {
   padding-top: 1px;
   padding-bottom: 1px;
 }
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2210,6 +2218,9 @@ select {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+.text-\[0\.625rem\] {
+  font-size: 0.625rem;
 }
 .font-medium {
   font-weight: 500;
@@ -2650,6 +2661,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(165 180 252 / var(--tw-text-opacity));
 }
+.hover\:text-indigo-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
+}
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
@@ -2829,6 +2844,10 @@ select {
 .disabled\:opacity-25:disabled {
   opacity: 0.25;
 }
+.group:hover .group-hover\:border-indigo-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(79 70 229 / var(--tw-border-opacity));
+}
 .group:hover .group-hover\:text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -2836,6 +2855,10 @@ select {
 .group:hover .group-hover\:text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.group:hover .group-hover\:text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 .group:hover .group-hover\:opacity-75 {
   opacity: 0.75;
@@ -3184,6 +3207,11 @@ select {
     padding-right: 0.75rem;
   }
 
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .sm\:pb-4 {
     padding-bottom: 1rem;
   }
@@ -3211,6 +3239,26 @@ select {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .sm\:leading-6 {

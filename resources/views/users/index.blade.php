@@ -34,20 +34,13 @@
                                 </div>
                             </div>
                             <div class="px-4 py-5 sm:px-6">
-                                <p class="mt-1 text-sm text-gray-500">{{ $user->introduction }}</p>
+                                <p class="mt-1 text-sm text-gray-500">{!! nl2br(e($user->introduction)) !!}</p>
                             </div>
                         </div>
                     </div>
 
-                    <x-users.tablist :user="$user" :announces="$announces" />
+                    @livewire('user.tabs', ['user' => $user])
 
-                    @foreach ($announces as $announce)
-                        @livewire('announces', ['announce' => $announce])
-                    @endforeach
-
-                    <div class="bg-white px-4 sm:px-6">
-                        {{ $announces->links('vendor.livewire.tailwind2') }}
-                    </div>
                 </div>
             </div>
         </div>

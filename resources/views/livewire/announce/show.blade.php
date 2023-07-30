@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                @livewire('dropdown-menu', ['announce' => $announce])
+                @livewire('dropdown-menu', ['announce' => $announce], key('announce-dropdown-' . $announce->id))
             </div>
 
             <div>
@@ -42,8 +42,6 @@
             @if (!$announce->comments->isEmpty() && !request()->routeIs('announces.show'))
                 <x-comments.counter :announce="$announce" />
             @endif
-
         </div>
-
     </div>
 </div>
