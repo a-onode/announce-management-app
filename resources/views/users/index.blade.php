@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
-                        <div>
+                        <div class="mb-2">
                             <img class="h-32 w-full object-cover lg:h-48" src="{{ asset('storage/images/backgrounds/' . Auth::user()->background_image) }}">
                         </div>
                         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -20,9 +20,10 @@
                                 </div>
                                 <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                                     <div class="mt-6 min-w-0 flex-1 sm:hidden md:block">
-                                        <h1 class="truncate text-2xl font-bold text-gray-900">{{ $user->name }}</h1>
+                                        <h1 class="truncate text-2xl font-bold text-gray-900">{{ Auth::user()->name }}</h1>
+                                        <x-badge :role="Auth::user()->role" />
                                     </div>
-                                    <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
+                                    <a href="{{ route('users.edit', ['user' => Auth::id()]) }}" class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0">
                                         <button type="button" class="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                                             <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
@@ -33,13 +34,25 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="px-4 py-5 sm:px-6">
-                                <p class="mt-1 text-sm text-gray-500">{!! nl2br(e($user->introduction)) !!}</p>
+                            <div class="px-4 pt-5 sm:px-6">
+                                <p class="mt-1 text-sm text-gray-500">{!! nl2br(e(Auth::user()->introduction)) !!}</p>
+
+                                <dl class="flex pt-4 gap-6">
+                                    <a href="#" class="flex items-center">
+                                        <dd class="text-lg font-semibold tracking-tight pr-2 text-gray-900 hover:underline">{{ Auth::user()->follows->count() }}</dd>
+                                        <dt class="truncate text-sm font-medium pt-1 text-gray-500">フォロー中</dt>
+                                    </a>
+                                    <a href="#" class="flex items-center">
+                                        <dd class="text-lg font-semibold tracking-tight pr-2 text-gray-900 hover:underline">{{ Auth::user()->followers->count() }}</dd>
+                                        <dt class="truncate text-sm font-medium pt-1 text-gray-500">フォロワー</dt>
+                                    </a>
+                                </dl>
                             </div>
+
                         </div>
                     </div>
 
-                    @livewire('user.tabs', ['user' => $user])
+                    @livewire('user.tabs', ['user' => Auth::user()])
 
                 </div>
             </div>

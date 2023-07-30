@@ -1,5 +1,5 @@
 <div class="bg-white overflow-hidden sm:rounded-lg">
-    <div class="pt-6 pl-6 pr-6 bg-white">
+    <div class="pt-2 pl-6 pr-6 bg-white">
         <div class="border-b border-gray-200 pb-5 sm:pb-0">
             <div class="mt-3 sm:mt-4">
                 <div class="sm:hidden">

@@ -8,7 +8,7 @@
                 <div>
                     <div class="flex pb-1">
                         <p class="text-sm font-semibold text-gray-900">
-                            <a href="#" class="hover:underline">{{ $announce->user->name }}</a>
+                            <a href="{{ route('users.show', ['user' => $announce->user->id]) }}" class="hover:underline">{{ $announce->user->name }}</a>
                         </p>
                         <p class="text-sm text-gray-500 pl-2">
                             <a href="#" class="hover:underline">{{ $announce->created_at->diffForHumans() }}</a>

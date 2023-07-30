@@ -91,6 +91,11 @@ class User extends Authenticatable
         return $this->belongsToMany(self::class, 'followers', 'following_id', 'followed_id');
     }
 
+    public function isFollow(int $id)
+    {
+        return (bool) $this->followers()->where('following_id', $id)->exists();
+    }
+
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

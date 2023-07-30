@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\Announce;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,12 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::findOrFail(Auth::id());
-        $announces = Announce::where('user_id', Auth::id())
-            ->latest()
-            ->paginate(10);
-
-        return view('users.index', compact('user', 'announces'));
+        return view('users.index');
     }
 
     /**
@@ -54,7 +48,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user = User::findOrFail($user->id);
+
+        return $user->id === Auth::id() ? to_route('users.index') : view('users.show', compact('user'));
     }
 
     /**
