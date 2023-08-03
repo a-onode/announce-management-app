@@ -11,7 +11,7 @@
     }
     if ($role === 3) {
         $role = 'LD';
-        $bgColor = 'bg-gray-400';
+        $bgColor = 'bg-gray-300';
         $txtColor = 'text-black';
     }
     if ($role === 4) {
@@ -26,4 +26,4 @@
     }
 @endphp
 
-<p class="inline-flex items-center rounded-full {{ $bgColor }} px-1.5 py-0.5 text-xs font-medium {{ $txtColor }}">{{ $role }}</p>
+<p class="inline-flex items-center rounded-md {{ $bgColor }} px-1.5 py-0.5 text-xs font-medium {{ $txtColor }}">{{ $role }}</p>

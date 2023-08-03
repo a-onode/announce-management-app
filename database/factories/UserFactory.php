@@ -36,7 +36,7 @@ class UserFactory extends Factory
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
-            'introduction' => $this->faker->sentence(),
+            'introduction' => $this->faker->realText(),
             'profile_image' => 'profile_image' . rand(1, 10) . '.png',
             'background_image' => 'beach.jpg',
             // 'current_team_id' => null,

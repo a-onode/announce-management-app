@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFollowerRequest;
 use App\Http\Requests\UpdateFollowerRequest;
 use App\Models\Follower;
+use App\Models\User;
 
 class FollowerController extends Controller
 {
@@ -82,5 +83,21 @@ class FollowerController extends Controller
     public function destroy(Follower $follower)
     {
         //
+    }
+
+    public function following($follower)
+    {
+        $user = User::findOrFail($follower);
+        $users = $user->follows;
+
+        return view('followers.show', compact('users'));
+    }
+
+    public function followed($follower)
+    {
+        $user = User::findOrFail($follower);
+        $users = $user->followers;
+
+        return view('followers.show', compact('users'));
     }
 }

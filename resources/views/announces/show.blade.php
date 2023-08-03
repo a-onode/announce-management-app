@@ -35,7 +35,7 @@
                                             <div class="flex justify-between">
                                                 <div>
                                                     <div class="text-sm">
-                                                        <a href="#" class="font-medium text-gray-900">{{ $comment->user->name }}</a>
+                                                        <a href="{{ route('users.show', ['user' => $comment->user_id]) }}" class="font-medium text-gray-900 hover:underline">{{ $comment->user->name }}</a>
                                                     </div>
                                                     <p class="mt-0.5 text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
                                                 </div>

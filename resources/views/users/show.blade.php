@@ -32,11 +32,11 @@
                                 <p class="mt-1 text-sm text-gray-500">{!! nl2br(e($user->introduction)) !!}</p>
 
                                 <dl class="flex pt-4 gap-6">
-                                    <a href="#" class="flex items-center">
+                                    <a href="{{ route('followers.following', ['follower' => $user->id]) }}" class="flex items-center">
                                         <dd class="text-lg font-semibold tracking-tight pr-2 text-gray-900 hover:underline">{{ $user->follows->count() }}</dd>
                                         <dt class="truncate text-sm font-medium pt-1 text-gray-500">フォロー中</dt>
                                     </a>
-                                    <a href="#" class="flex items-center">
+                                    <a href="{{ route('followers.followed', ['follower' => $user->id]) }}" class="flex items-center">
                                         <dd class="text-lg font-semibold tracking-tight pr-2 text-gray-900 hover:underline">{{ $user->followers->count() }}</dd>
                                         <dt class="truncate text-sm font-medium pt-1 text-gray-500">フォロワー</dt>
                                     </a>

@@ -27,6 +27,13 @@ Route::prefix('users')->group(function () {
         ->name('users.mypage');
 });
 
+Route::prefix('followers')->group(function () {
+    Route::get('/{follower}/following', [FollowerController::class, 'following'])
+        ->name('followers.following');
+    Route::get('/{follower}/followed', [FollowerController::class, 'followed'])
+        ->name('followers.followed');
+});
+
 Route::resources([
     'users' => UserController::class,
     'announces' => AnnounceController::class,

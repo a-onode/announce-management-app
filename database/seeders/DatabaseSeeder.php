@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
             FollowerSeeder::class,
         ]);
 
-        \App\Models\User::factory(20)->create();
+        \App\Models\User::factory(30)->create();
         \App\Models\Announce::factory(100)->create();
         \App\Models\Comment::factory(200)->create();
         \App\Models\Favorite::factory(200)->create();
-        \App\Models\Follower::factory(200)->create();
+        \App\Models\Follower::factory(600)->create();
     }
 }
