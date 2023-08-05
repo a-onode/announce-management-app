@@ -10,7 +10,10 @@ class FollowerController extends Controller
 {
     public function store(StoreFollowerRequest $request)
     {
-        Auth::user()->follows()->attach($request['user_id']);
+        $user = User::findOrFail($request['user_id']);
+        Auth::user()->follows()->attach($user->id);
+
+        session()->flash('message', $user->name . 'のフォローしました。');
 
         return redirect()->back();
     }
@@ -19,6 +22,8 @@ class FollowerController extends Controller
     {
         $user = User::findOrFail($follower);
         Auth::user()->follows()->detach($user);
+
+        session()->flash('message', $user->name . 'のフォローを解除しました。');
 
         return redirect()->back();
     }
@@ -29,18 +34,20 @@ class FollowerController extends Controller
 
         switch ($type) {
             case 'following':
+                $title = 'フォロー中';
                 $users = User::whereHas('followers', function ($query) use ($user) {
                     $query->where('following_id', $user->id);
                 })->paginate(10);
 
-                return view('followers.list', compact('users'));
+                return view('followers.list', compact('users', 'title'));
 
             case 'followed':
+                $title = 'フォロワー';
                 $users = User::whereHas('follows', function ($query) use ($user) {
                     $query->where('followed_id', $user->id);
                 })->paginate(10);
 
-                return view('followers.list', compact('users'));
+                return view('followers.list', compact('users', 'title'));
         }
     }
 }

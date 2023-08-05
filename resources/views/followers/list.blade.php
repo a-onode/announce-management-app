@@ -1,13 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('フォロー中') }}
+            {{ __($title) }}
         </h2>
     </x-slot>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+                <x-flash-message />
+
                 <div class="p-6 bg-white border-b border-gray-200">
 
                     @foreach ($users as $user)
@@ -20,10 +23,10 @@
                                                 @livewire('rounded-avatar', ['user' => $user])
                                             </div>
                                             <div class="ml-4">
-                                                <div class="flex items-center gap-2">
+                                                <a href="{{ route('users.show', ['user' => $user->id]) }}" class="flex items-center gap-2">
                                                     <h3 class="text-base font-semibold leading-6 text-gray-900 hover:underline">{{ $user->name }}</h3>
                                                     <x-badge :role="$user->role" />
-                                                </div>
+                                                </a>
                                                 <p class="text-sm text-gray-500">
                                                     {{ mb_strimwidth($user->introduction, 0, 150, '...') }}
                                                 </p>
