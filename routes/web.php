@@ -23,25 +23,30 @@ Route::get('/', function () {
 });
 
 Route::prefix('users')->group(function () {
-    Route::get('/mypage/{$user}', [UserController::class, 'mypage'])
+    Route::get('/mypage/{user}', [UserController::class, 'mypage'])
         ->name('users.mypage');
 });
 
 Route::prefix('followers')->group(function () {
-    Route::get('/{follower}/following', [FollowerController::class, 'following'])
-        ->name('followers.following');
-    Route::get('/{follower}/followed', [FollowerController::class, 'followed'])
-        ->name('followers.followed');
+    Route::get('{follower}/{type}', [FollowerController::class, 'list'])
+        ->where('type', '(following|followed)')
+        ->name('followers.list');
 });
 
-Route::resources([
-    'users' => UserController::class,
-    'announces' => AnnounceController::class,
-    'comments' => CommentController::class,
-    'favorites' => FavoriteController::class,
-    'followers' => FollowerController::class,
-], [
-    'except' => ['annonces.store']
+Route::resource('users', UserController::class);
+
+Route::resource('announces', AnnounceController::class)->except('store');
+
+Route::resource('comments', CommentController::class);
+
+Route::resource('favorites', FavoriteController::class);
+
+Route::resource('followers', FollowerController::class)->except([
+    'index',
+    'create',
+    'show',
+    'edit',
+    'update',
 ]);
 
 Route::middleware([

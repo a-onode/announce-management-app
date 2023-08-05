@@ -38,11 +38,11 @@
                                 <p class="mt-1 text-sm text-gray-500">{!! nl2br(e(Auth::user()->introduction)) !!}</p>
 
                                 <dl class="flex pt-4 gap-6">
-                                    <a href="{{ route('followers.following', ['follower' => Auth::id()]) }}" class="flex items-center">
+                                    <a href="{{ route('followers.list', ['follower' => Auth::id(), 'type' => 'following']) }}" class="flex items-center">
                                         <dd class="text-lg font-semibold tracking-tight pr-2 text-gray-900 hover:underline">{{ Auth::user()->follows->count() }}</dd>
                                         <dt class="truncate text-sm font-medium pt-1 text-gray-500">フォロー中</dt>
                                     </a>
-                                    <a href="{{ route('followers.followed', ['follower' => Auth::id()]) }}" class="flex items-center">
+                                    <a href="{{ route('followers.list', ['follower' => Auth::id(), 'type' => 'followed']) }}" class="flex items-center">
                                         <dd class="text-lg font-semibold tracking-tight pr-2 text-gray-900 hover:underline">{{ Auth::user()->followers->count() }}</dd>
                                         <dt class="truncate text-sm font-medium pt-1 text-gray-500">フォロワー</dt>
                                     </a>
