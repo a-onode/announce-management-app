@@ -29,12 +29,16 @@ class FollowerController extends Controller
 
         switch ($type) {
             case 'following':
-                $users = $user->follows;
+                $users = User::whereHas('followers', function ($query) use ($user) {
+                    $query->where('following_id', $user->id);
+                })->paginate(10);
 
                 return view('followers.list', compact('users'));
 
             case 'followed':
-                $users = $user->followers;
+                $users = User::whereHas('follows', function ($query) use ($user) {
+                    $query->where('followed_id', $user->id);
+                })->paginate(10);
 
                 return view('followers.list', compact('users'));
         }

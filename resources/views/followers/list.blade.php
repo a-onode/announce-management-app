@@ -38,9 +38,9 @@
                         </div>
                     @endforeach
 
-                    {{-- <div class="bg-white px-4 pt-4 sm:px-6">
+                    <div class="bg-white px-4 pt-4 sm:px-6">
                         {{ $users->links('vendor.livewire.tailwind2') }}
-                    </div> --}}
+                    </div>
 
                 </div>
             </div>
