@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('tel')->unique();
             $table->string('password');
             $table->tinyInteger('role');
-            $table->date('birthday')->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->rememberToken();
             $table->string('introduction')->nullable();
             // $table->foreignId('current_team_id')->nullable();
             $table->string('profile_image')->nullable();
             $table->string('background_image')->nullable();
+            $table->date('joined_date');
             $table->timestamps();
         });
     }

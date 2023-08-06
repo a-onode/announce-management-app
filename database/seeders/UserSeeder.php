@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'role' => 5,
             'profile_image' => 'profile_image' . rand(1, 10) . '.png',
             'background_image' => 'colorful.jpg',
+            'joined_date' => '2020-01-10',
         ]);
     }
 }
