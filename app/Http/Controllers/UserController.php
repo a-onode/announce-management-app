@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -39,8 +40,13 @@ class UserController extends Controller
     {
         $updateData = [
             'name' => $request->input('name'),
+            'gender' => $request->input('gender'),
             'introduction' => $request->input('introduction'),
         ];
+
+        if ($request->input('password')) {
+            $updateData['password'] = Hash::make($request->input('password'));
+        }
 
         if ($request->hasFile('profile_image')) {
             $profImageFile = $request->file('profile_image');

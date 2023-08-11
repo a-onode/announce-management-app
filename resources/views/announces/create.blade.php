@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-10 bg-white border-b border-gray-200">
 
-                    @livewire('announce-create')
+                    @livewire('announce.create')
 
                 </div>
             </div>

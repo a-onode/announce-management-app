@@ -1,6 +1,7 @@
-<form action="{{ route('users.update', ['user' => $user->id]) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('users.update', ['user' => $user->id]) }}" method="post" id="userForm" enctype="multipart/form-data">
     @method('put')
     @csrf
+
     <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
             <h2 class="text-base font-semibold leading-7 text-gray-900">基本情報</h2>
@@ -9,19 +10,24 @@
                 <div class="sm:col-span-4">
                     <label for="name" class="block text-sm font-medium leading-6 text-gray-900">ユーザ名</label>
                     <div class="mt-2">
-                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                            <input type="text" name="name" id="name" value="{{ $user->name }}" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md @error('name') bg-red-50 ring-red-500 focus-within:ring-red-500 @enderror">
+                            <input type="text" name="name" id="name" value="{{ $user->name }}" wire:model.lazy="name" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
                         </div>
                     </div>
+                    @error('name')
+                        <x-validation-message :message="$message" />
+                    @enderror
                 </div>
-
 
                 <div class="col-span-full">
                     <label for="about" class="block text-sm font-medium leading-6 text-gray-900">自己紹介</label>
                     <div class="mt-2">
-                        <textarea id="introduction" name="introduction" rows="5" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ $user->introduction }}</textarea>
+                        <textarea id="introduction" name="introduction" rows="5" wire:model.lazy="introduction"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('introduction') bg-red-50 ring-red-500 focus:ring-red-500 @enderror">{{ $user->introduction }}</textarea>
                     </div>
-                    <p class="mt-3 text-sm leading-6 text-gray-600"></p>
+                    @error('introduction')
+                        <x-validation-message :message="$message" />
+                    @enderror
                 </div>
 
                 <div x-data="{ imagePreview: '{{ asset('storage/images/user/' . $user->profile_image) }}' }" class="col-span-full">
@@ -111,15 +117,23 @@
                 <div>
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">パスワード</label>
                     <div class="mt-2">
-                        <input type="password" name="password" id="password" class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="password" name="password" id="password" wire:model.lazy="password"
+                            class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('password') bg-red-50 ring-red-500 focus:ring-red-500 @enderror">
                     </div>
+                    @error('password')
+                        <x-validation-message :message="$message" />
+                    @enderror
                 </div>
 
                 <div>
-                    <label for="password_confirm" class="block text-sm font-medium leading-6 text-gray-900">確認用パスワード</label>
+                    <label for="password-confirmation" class="block text-sm font-medium leading-6 text-gray-900">確認用パスワード</label>
                     <div class="mt-2">
-                        <input type="password" name="password_confirm" id="password_confirm" class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input type="password" name="password_confirmation" id="password-confirmation" wire:model.lazy="password_confirmation"
+                            class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('password_confirmation') bg-red-50 ring-red-500 focus:ring-red-500 @enderror">
                     </div>
+                    @error('password_confirmation')
+                        <x-validation-message :message="$message" />
+                    @enderror
                 </div>
 
                 <div>
@@ -163,3 +177,11 @@
     </div>
 
 </form>
+
+<script>
+    'use strict';
+
+    window.livewire.on('validationSuccess', () => {
+        document.getElementById('userForm').submit();
+    });
+</script>
