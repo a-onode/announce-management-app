@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/search', [SearchController::class, 'index'])
+    ->name('search.index');
 
 Route::prefix('users')->group(function () {
     Route::get('/mypage/{user}', [UserController::class, 'mypage'])
