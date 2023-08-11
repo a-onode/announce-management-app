@@ -16,6 +16,7 @@ class Edit extends Component
         'name' => 'required',
         'introduction' => 'max:250',
         'password' => 'min:8|confirmed',
+        'password_confirmation' => 'required_with:password',
     ];
 
     protected $messages = [
@@ -23,6 +24,7 @@ class Edit extends Component
         'introduction.max' => '250文字以内で入力してください。',
         'password.min' => '8文字以上で入力してください。',
         'password.confirmed' => '確認用パスワードと一致しません。',
+        'password_confirmation.required_with' => '確認用パスワードを入力してください。'
     ];
 
 

@@ -2,7 +2,7 @@
     <div class="relative flex items-start space-x-3">
 
         <div class="relative">
-            <img class="h-10 w-10 rounded-md" src="{{ asset('storage/images/users/' . $comment->user->profile_image) }}">
+            <img class="h-10 w-10 rounded-md" src="{{ asset('storage/images/user/' . $comment->user->profile_image) }}">
             <span class="absolute -bottom-0.5 -right-1 rounded-tl bg-white px-0.5 py-px">
                 <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd"
