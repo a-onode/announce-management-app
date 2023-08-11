@@ -30,10 +30,11 @@ class User extends Authenticatable
         'tel',
         'password',
         'role',
-        'birthday',
         'gender',
         'introduction',
-        'background_photo_path',
+        'profile_image',
+        'background_image',
+        'joined_date',
     ];
 
     /**
@@ -64,6 +65,10 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+    ];
+
+    protected $dates = [
+        'joined_date',
     ];
 
     public function announces()

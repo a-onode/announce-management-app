@@ -36,8 +36,8 @@ class UserFactory extends Factory
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
             'introduction' => $this->faker->realText(),
-            'profile_image' => 'profile_image' . rand(1, 10) . '.png',
-            'background_image' => 'beach.jpg',
+            'profile_image' => 'defaults/image (' . rand(1, 13) . ').png',
+            'background_image' => 'defaults/beach.jpg',
             'joined_date' => $this->faker->dateTimeBetween('2018-01-15', 'now'),
             // 'current_team_id' => null,
         ];

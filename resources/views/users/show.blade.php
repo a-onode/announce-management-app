@@ -14,12 +14,12 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
                         <div class="mb-2">
-                            <img class="h-32 w-full object-cover lg:h-48" src="{{ asset('storage/images/backgrounds/' . $user->background_image) }}">
+                            <img class="h-32 w-full object-cover lg:h-48" src="{{ asset('storage/images/background/' . $user->background_image) }}">
                         </div>
                         <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                             <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
                                 <div class="flex">
-                                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32 bg-white" src="{{ asset('storage/images/users/' . $user->profile_image) }}">
+                                    <img class="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32 bg-white" src="{{ asset('storage/images/user/' . $user->profile_image) }}">
                                 </div>
 
                                 <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
