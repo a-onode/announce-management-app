@@ -24,20 +24,26 @@
                 </div>
             </div>
 
+            <!-- Search Form -->
             <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
                 <form action="{{ route('search.index') }}" method="get" class="w-full max-w-lg lg:max-w-xs">
-                    @csrf
-                    <label for="search" class="sr-only">Search</label>
+                    <label for="search_target" class="sr-only">Search Target</label>
                     <div class="flex items-center">
-                        <div class="relative flex-grow">
+                        <div class="relative w-1/4">
+                            <select id="search_target" name="search_target" class="block w-full rounded-md border-0 bg-white py-1.5 pr-8 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <option value="announce" {{ request('search_target') === 'announce' ? 'selected' : '' }}>周知</option>
+                                <option value="user" {{ request('search_target') === 'user' ? 'selected' : '' }}>ユーザ</option>
+                            </select>
+                        </div>
+                        <div class="relative w-1/2 ml-2">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input id="search" name="search" value="{{ request('search') }}" class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="検索" type="search">
+                            <label for="search_word" class="sr-only">Search Word</label>
+                            <input id="search_word" name="search_word" value="{{ request('search_word') }}" class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="検索" type="search">
                         </div>
-
                         <button type="submit" class="ml-2 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">検索</button>
                     </div>
                 </form>

@@ -10,20 +10,32 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $searchWord = $request->input('search_word');
+        $searchTarget = $request->input('search_target');
+        $category = $request->input('category');
 
-        if (!$search) {
+        if (!$searchWord) {
             return redirect()->back();
         }
 
-        $users = User::where('name', 'LIKE', '%' . $search . '%')
-            ->latest()
-            ->paginate(10);
-        $announces = Announce::where('name', 'LIKE', '%' . $search . '%')
-            ->orWhere('text', 'LIKE', '%' . $search . '%')
-            ->latest()
-            ->paginate(10);
+        switch ($searchTarget) {
+            case 'announce':
+                $announces = Announce::where('name', 'LIKE', '%' . $searchWord . '%')
+                    ->orWhere('text', 'LIKE', '%' . $searchWord . '%')
+                    ->latest()
+                    ->paginate(10);
 
-        return view('search', compact('users', 'announces'));
+                return view('search.announces', compact('announces'));
+
+            case 'user':
+                $users = User::where('name', 'LIKE', '%' . $searchWord . '%')
+                    ->latest()
+                    ->paginate(10);
+
+                return view('search.users', compact('users'));
+
+            default:
+                return redirect()->back();
+        }
     }
 }
