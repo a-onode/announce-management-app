@@ -24,6 +24,7 @@ class AnnounceFactory extends Factory
             'authority' => $this->faker->numberBetween(1, 5),
             'type' => $this->faker->numberBetween(1, 4),
             'is_visible' => $this->faker->boolean(),
+            'created_at' => $this->faker->dateTimeBetween('-2 years', 'now'),
         ];
     }
 }
