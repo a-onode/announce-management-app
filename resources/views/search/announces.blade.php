@@ -27,21 +27,24 @@
                         <span class="bg-gray-100 text-gray-900 ml-1 hidden rounded-full py-0.5 px-2.5 text-xs font-medium md:inline-block" :class="activeType === '{{ \Constant::ANNOUNCE_LIST['office'] }}' ? 'bg-indigo-100 text-indigo-600' : 'bg-gray-100 text-gray-900'">{{ $officeCount }}</span>
                     </a>
                 </div>
-                <form action="{{ route('search.index') }}" class="ml-auto flex-shrink-0" x-data="{}">
+                <form x-ref="submitForm" action="{{ route('search.index') }}" class="ml-auto flex-shrink-0" x-data="{ submit() { $refs.submitForm.submit() } }">
                     <label for="search_target" class="sr-only">Search Target</label>
                     <input type="hidden" id="search_target" name="search_target" value="{{ request('search_target') }}">
+
+                    <label for="type" class="sr-only">Search Target</label>
+                    <input type="hidden" id="type" name="type" value="{{ request('type') }}">
 
                     <label for="search_word" class="sr-only">Search Word</label>
                     <input type="hidden" id="search_word" name="search_word" value="{{ request('search_word') }}">
 
                     <div class="flex space-x-2">
                         <label for="sort" class="sr-only">Sort</label>
-                        <select id="sort" name="sort" class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <select x-on:change="submit()" id="sort" name="sort" class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <option value="desc" {{ request('sort') === 'desc' ? 'selected' : '' }}>新しい順</option>
                             <option value="asc" {{ request('sort') === 'asc' ? 'selected' : '' }}>古い順</option>
                         </select>
                         <label for="date" class="sr-only">Date</label>
-                        <select id="date" name="date" class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <select x-on:change="submit()" id="date" name="date" class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             <option value="always" {{ request('date') === 'always' ? 'selected' : '' }}>常に</option>
                             <option value="today" {{ request('date') === 'today' ? 'selected' : '' }}>今日</option>
                             <option value="yesterday" {{ request('date') === 'yesterday' ? 'selected' : '' }}>昨日</option>
