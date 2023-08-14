@@ -13,9 +13,21 @@
 
                 @livewire('announce.show', ['announce' => $announce], key($announce->id))
 
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="pl-6 pr-6 pt-2 pb-6 bg-white border-b border-gray-200">
-                        <div class="space-y-6">
+                <div x-data="{ isOpen: true }" class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="pl-6 pr-6 pb-6 bg-white border-b border-gray-200">
+
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center">
+                                <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center gap-x-1.5 rounded-full bg-white px-6 py-1.5 text-sm text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                    <p x-text="isOpen ? 'コメントを閉じる': 'コメントを開く'"></p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div x-show="isOpen" class="space-y-6 pt-2">
                             @foreach ($announce->comments as $comment)
                                 <div class="relative bg-white px-2 sm:px-4">
                                     <div class="relative flex items-start space-x-3">
