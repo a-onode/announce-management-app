@@ -62,6 +62,9 @@
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+                <x-flash-message />
+
                 @if ($announces->count())
                     @foreach ($announces as $announce)
                         @livewire('announce.show', ['announce' => $announce], key($announce->id))

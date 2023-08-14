@@ -13,9 +13,6 @@ class SearchController extends Controller
     {
         $searchWord = $request->input('search_word');
         $searchTarget = $request->input('search_target');
-        $type = $request->input('type');
-        $date = $request->input('date');
-        $sortOrder = $request->input('sort');
 
         if (!$searchWord) {
             return redirect()->back();
@@ -23,6 +20,9 @@ class SearchController extends Controller
 
         switch ($searchTarget) {
             case 'announce':
+                $type = $request->input('type');
+                $date = $request->input('date');
+                $sortOrder = $request->input('sort');
                 $query = Announce::query();
 
                 if ($type && $type !== \Constant::ANNOUNCE_LIST['all']) {
@@ -54,11 +54,27 @@ class SearchController extends Controller
                 return view('search.announces', compact('announces', 'allCount', 'generalCount', 'techCount', 'operationCount', 'officeCount'));
 
             case 'user':
-                $users = User::where('name', 'LIKE', '%' . $searchWord . '%')
+                $role = $request->input('role');
+                $query = User::query();
+
+                if ($role) {
+                    $query->where('role', $role);
+                }
+
+                $users =  $query->where(function ($query) use ($searchWord) {
+                    $query->where('name', 'LIKE', '%' . $searchWord . '%');
+                })
                     ->latest()
                     ->paginate(10);
 
-                return view('search.users', compact('users'));
+                $allCount = SearchService::roleCount('all', $searchWord);
+                $agtCount = SearchService::roleCount('agt', $searchWord);
+                $aldCount = SearchService::roleCount('ald', $searchWord);
+                $ldCount = SearchService::roleCount('ld', $searchWord);
+                $svCount = SearchService::roleCount('sv', $searchWord);
+                $mgrCount = SearchService::roleCount('mgr', $searchWord);
+
+                return view('search.users', compact('users', 'allCount', 'agtCount', 'aldCount', 'ldCount', 'svCount', 'mgrCount'));
 
             default:
                 return redirect()->back();

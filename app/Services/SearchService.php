@@ -3,16 +3,17 @@
 namespace App\Services;
 
 use App\Models\Announce;
+use App\Models\User;
 use Carbon\Carbon;
 
 class SearchService
 {
-    public static function typeCount(string $typeName, string $searchWord)
+    public static function typeCount(string $type, string $searchWord)
     {
         $query = Announce::query();
 
-        if ($typeName !== 'all') {
-            $typeCount = $query->where('type', \Constant::ANNOUNCE_LIST[$typeName])
+        if ($type !== 'all') {
+            $typeCount = $query->where('type', \Constant::ANNOUNCE_LIST[$type])
                 ->where(function ($query) use ($searchWord) {
                     $query->where('name', 'LIKE', '%' . $searchWord . '%')
                         ->orWhere('text', 'LIKE', '%' . $searchWord . '%');
@@ -65,5 +66,21 @@ class SearchService
                 $query->orderBy('created_at', 'desc');
                 break;
         }
+    }
+
+    public static function roleCount(string $role, string $searchWord)
+    {
+        $query = User::query();
+
+        if ($role !== 'all') {
+            $roleCount = $query->where('role', \Constant::USER_LIST[$role])
+                ->where('name', 'LIKE', '%' . $searchWord . '%')
+                ->count();
+        } else {
+            $roleCount = $query->where('name', 'LIKE', '%' . $searchWord . '%')
+                ->count();
+        }
+
+        return $roleCount;
     }
 }
