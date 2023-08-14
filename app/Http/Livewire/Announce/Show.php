@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Announce;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Announces extends Component
+class Show extends Component
 {
     use WithPagination;
 
@@ -18,6 +18,6 @@ class Announces extends Component
 
     public function render()
     {
-        return view('livewire.announces');
+        return view('livewire.announce.show');
     }
 }

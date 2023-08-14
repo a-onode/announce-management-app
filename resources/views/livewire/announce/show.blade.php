@@ -8,7 +8,7 @@
                 <div>
                     <div class="flex pb-1">
                         <p class="text-sm font-semibold text-gray-900">
-                            <a href="#" class="hover:underline">{{ $announce->user->name }}</a>
+                            <a href="{{ route('users.show', ['user' => $announce->user_id]) }}" class="hover:underline">{{ $announce->user->name }}</a>
                         </p>
                         <p class="text-sm text-gray-500 pl-2">
                             <a href="#" class="hover:underline">{{ $announce->created_at->diffForHumans() }}</a>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                @livewire('dropdown-menu', ['announce' => $announce])
+                @livewire('dropdown-menu', ['announce' => $announce], key('announce-dropdown-' . $announce->id))
             </div>
 
             <div>
@@ -42,8 +42,6 @@
             @if (!$announce->comments->isEmpty() && !request()->routeIs('announces.show'))
                 <x-comments.counter :announce="$announce" />
             @endif
-
         </div>
-
     </div>
 </div>

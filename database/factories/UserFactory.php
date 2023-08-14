@@ -31,14 +31,14 @@ class UserFactory extends Factory
             'tel' => $this->faker->phoneNumber(),
             'password' => $this->faker->password(),
             'role' => $this->faker->numberBetween(1, 5),
-            'birthday' => $this->faker->date('Y-m-d'),
             'gender' => $this->faker->numberBetween(1, 3),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
-            'introduction' => $this->faker->sentence(),
-            'profile_photo_path' => 'user.png',
-            'background_photo_path' => null,
+            'introduction' => $this->faker->realText(),
+            'profile_image' => 'defaults/image (' . rand(1, 13) . ').png',
+            'background_image' => 'defaults/beach.jpg',
+            'joined_date' => $this->faker->dateTimeBetween('2018-01-15', 'now'),
             // 'current_team_id' => null,
         ];
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Announce;
 
 use App\Models\Announce;
 use App\Services\ImageService;
@@ -8,7 +8,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 
-class AnnounceCreate extends Component
+class Create extends Component
 {
     use WithFileUploads;
 
@@ -82,6 +82,6 @@ class AnnounceCreate extends Component
 
     public function render()
     {
-        return view('livewire.announce-create');
+        return view('livewire.announce.create');
     }
 }

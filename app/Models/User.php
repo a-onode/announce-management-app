@@ -30,10 +30,11 @@ class User extends Authenticatable
         'tel',
         'password',
         'role',
-        'birthday',
         'gender',
         'introduction',
-        'background_photo_path',
+        'profile_image',
+        'background_image',
+        'joined_date',
     ];
 
     /**
@@ -66,6 +67,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    protected $dates = [
+        'joined_date',
+    ];
+
     public function announces()
     {
         return $this->hasMany(Announce::class);
@@ -89,6 +94,11 @@ class User extends Authenticatable
     public function follows()
     {
         return $this->belongsToMany(self::class, 'followers', 'following_id', 'followed_id');
+    }
+
+    public function isFollow(int $id)
+    {
+        return (bool) $this->followers()->where('following_id', $id)->exists();
     }
 
     public function isOnline()

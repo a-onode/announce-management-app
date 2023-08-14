@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,19 +23,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/search', [SearchController::class, 'index'])
+    ->name('search.index');
+
 Route::prefix('users')->group(function () {
-    Route::get('/mypage/{$user}', [UserController::class, 'mypage'])
+    Route::get('/mypage/{user}', [UserController::class, 'mypage'])
         ->name('users.mypage');
 });
 
-Route::resources([
-    'users' => UserController::class,
-    'announces' => AnnounceController::class,
-    'comments' => CommentController::class,
-    'favorites' => FavoriteController::class,
-    'followers' => FollowerController::class,
-], [
-    'except' => ['annonces.store']
+Route::prefix('followers')->group(function () {
+    Route::get('{follower}/{type}', [FollowerController::class, 'list'])
+        ->where('type', '(following|followed)')
+        ->name('followers.list');
+});
+
+Route::resource('users', UserController::class);
+
+Route::resource('announces', AnnounceController::class)->except('store');
+
+Route::resource('comments', CommentController::class);
+
+Route::resource('favorites', FavoriteController::class);
+
+Route::resource('followers', FollowerController::class)->except([
+    'index',
+    'create',
+    'show',
+    'edit',
+    'update',
 ]);
 
 Route::middleware([

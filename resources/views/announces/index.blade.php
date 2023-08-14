@@ -12,7 +12,7 @@
                 <x-flash-message />
 
                 @foreach ($announces as $announce)
-                    @livewire('announces', ['announce' => $announce])
+                    @livewire('announce.show', ['announce' => $announce], key($announce->id))
                 @endforeach
 
                 <div class="bg-white px-4 pt-4 pb-6 sm:px-6">

@@ -16,7 +16,7 @@
             $txtColor = 'text-green-700';
             break;
         case 4:
-            $type = '事務';
+            $type = '庶務';
             $bgColor = 'bg-purple-100';
             $txtColor = 'text-purple-700';
             break;

@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Comment;
 
 use Livewire\Component;
 
-class DropdownMenu extends Component
+class Dropdown extends Component
 {
     public $comment;
     public $commentMenu = false;
@@ -45,6 +45,6 @@ class DropdownMenu extends Component
 
     public function render()
     {
-        return view('livewire.comment.dropdown-menu');
+        return view('livewire.comment.dropdown');
     }
 }

@@ -3,7 +3,7 @@
         <dt class="sr-only">Commenters</dt>
         @foreach ($announce->comments as $comment)
             <dd>
-                <img class="h-6 w-6 rounded-md bg-gray-50 ring-2 ring-white" src="https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Emma Dorsey">
+                <img class="h-6 w-6 rounded-md bg-gray-50 ring-2 ring-white" src="{{ asset('storage/images/user/' . $comment->user->profile_image) }}">
             </dd>
             @if ($loop->iteration >= 4)
             @break
