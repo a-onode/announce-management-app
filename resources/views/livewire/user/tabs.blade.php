@@ -47,6 +47,12 @@
     @endif
 
     @if ($currentTab === 'お気に入り')
-        <x-nothing word="お気に入り" />
+        @if ($user->favorites)
+            @foreach ($user->favorites->sortByDesc('created_at') as $favorite)
+                @livewire('announce.show', ['announce' => $favorite->announce])
+            @endforeach
+        @else
+            <x-nothing word="お気に入り" />
+        @endif
     @endif
 </div>

@@ -9,8 +9,6 @@ class Favorite extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'user_id',
         'announce_id',
@@ -21,7 +19,7 @@ class Favorite extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function announces()
+    public function announce()
     {
         return $this->belongsTo(Announce::class);
     }
