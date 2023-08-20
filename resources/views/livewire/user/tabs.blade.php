@@ -43,7 +43,18 @@
     @endif
 
     @if ($currentTab === 'メディア')
-        <x-nothing word="周知" />
+        @php
+            $mediaAnnounces = $user->announces->filter(function ($announce) {
+                return $announce->first_file || $announce->second_file;
+            });
+        @endphp
+        @if ($mediaAnnounces->count())
+            @foreach ($mediaAnnounces->sortByDesc('created_at') as $announce)
+                @livewire('announce.show', ['announce' => $announce], key('announce-show-' . $announce->id))
+            @endforeach
+        @else
+            <x-nothing />
+        @endif
     @endif
 
     @if ($currentTab === 'お気に入り')
