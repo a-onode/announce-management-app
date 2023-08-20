@@ -1,4 +1,4 @@
-<form wire:submit.prevent="store()" enctype="multipart/form-data">
+<form action="{{ route('announces.store') }}" method="post" id="announceForm" enctype="multipart/form-data">
     @csrf
 
     <div class="space-y-12">
@@ -120,9 +120,10 @@
 
                 <div class="flex items-center justify-between">
                     <span class="flex flex-grow flex-col">
-                        <span class="text-sm font-medium leading-6 text-gray-900" id="availability-label">Slackへ通知する</span>
+                        <label for="isSlack" class="text-sm font-medium leading-6 text-gray-900" id="availability-label">Slackへ通知する</label>
+                        <input type="hidden" name="isSlack" value="{{ $isSlack ? '1' : '0' }}">
                     </span>
-                    <button type="button" wire:click="$toggle('isSlack')" class="{{ $isSlack ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out" role="switch" aria-checked="{{ $isSlack }}"
+                    <button type="button" wire:click="toggleslack" class="{{ $isSlack ? 'bg-indigo-600' : 'bg-gray-200' }} relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out" role="switch" aria-checked="{{ $isSlack }}"
                         aria-labelledby="availability-label" aria-describedby="availability-description">
                         <span aria-hidden="true" class="{{ $isSlack ? 'translate-x-5' : 'translate-x-0' }} pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
                     </button>
@@ -136,3 +137,11 @@
         <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">投稿する</button>
     </div>
 </form>
+
+<script>
+    'use strict';
+
+    window.livewire.on('validationSuccess', () => {
+        document.getElementById('announceForm').submit();
+    });
+</script>
