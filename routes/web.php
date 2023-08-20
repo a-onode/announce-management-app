@@ -39,7 +39,7 @@ Route::prefix('followers')->group(function () {
 
 Route::resource('users', UserController::class);
 
-Route::resource('announces', AnnounceController::class)->except('store');
+Route::resource('announces', AnnounceController::class);
 
 Route::resource('comments', CommentController::class);
 

@@ -11,6 +11,7 @@
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^3.0",
+        "laravel/slack-notification-channel": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.11"
     },

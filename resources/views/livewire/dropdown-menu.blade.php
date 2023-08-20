@@ -12,12 +12,12 @@
             <div wire:click="closeDropdownMenu()" class="fixed top-0 left-0 w-full h-full bg-opacity-100 flex items-center justify-center"></div>
 
             <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
-                <p href="#" class="text-gray-700 flex px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-900" tabindex="-1" id="menu-0-item-0">
-                    <svg class="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <p wire:click="toggleFavorite()" class="text-gray-700 flex px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-900" tabindex="-1" id="menu-0-item-0">
+                    <svg class="mr-3 h-5 w-5 {{ $isFavorited ? 'text-yellow-400' : 'text-gray-400' }}" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span>お気に入り</span>
+                    <span>{{ $isFavorited ? 'お気に入り解除' : 'お気に入り' }}</span>
                 </p>
 
                 @if ($announce->user_id === Auth::id())
@@ -28,7 +28,6 @@
                         </svg>
                         <span>編集する</span>
                     </p>
-
                     <p wire:click="openDeleteModal()" class="text-gray-700 flex px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-900" tabindex="-1" id="menu-0-item-2">
                         <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd"
@@ -86,5 +85,4 @@
             </div>
         </div>
     @endif
-
 </div>

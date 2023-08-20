@@ -101,6 +101,11 @@ class User extends Authenticatable
         return (bool) $this->followers()->where('following_id', $id)->exists();
     }
 
+    public function isFavorite(int $id)
+    {
+        return (bool) $this->favorites()->where('announce_id', $id)->exists();
+    }
+
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

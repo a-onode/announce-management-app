@@ -31,7 +31,7 @@ class Announce extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function favorites()
+    public function favorite()
     {
         return $this->hasMany(Favorite::class);
     }
