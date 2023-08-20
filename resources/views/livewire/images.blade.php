@@ -1,10 +1,10 @@
 <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 mt-2">
-    @if ($announce->file1)
+    @if ($announce->first_file)
         <li class="relative">
             <div wire:click="openImageModal1" class="group block w-full h-40 overflow-hidden rounded-lg bg-gray-100">
-                <img src="{{ asset('storage/' . $announce->file1) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
+                <img src="{{ asset('storage/images/announce/' . $announce->first_file) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
             </div>
-            <p class="pointer-events-none mt-1 block truncate text-xs font-medium text-gray-500">{{ $announce->file1 }}</p>
+            <p class="pointer-events-none mt-1 block truncate text-xs font-medium text-gray-500">{{ $announce->first_file }}</p>
         </li>
 
         @if ($isVisibleImageModal1)
@@ -20,7 +20,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            <img src="{{ asset('storage/' . $announce->file1) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
+                            <img src="{{ asset('storage/images/announce/' . $announce->first_file) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
                         </div>
                     </div>
                 </div>
@@ -28,12 +28,12 @@
         @endif
     @endif
 
-    @if ($announce->file2)
+    @if ($announce->second_file)
         <li class="relative">
             <div wire:click="openImageModal2" class="group block w-full h-40 overflow-hidden rounded-lg bg-gray-100">
-                <img src="{{ asset('storage/' . $announce->file2) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
+                <img src="{{ asset('storage/images/announce/' . $announce->second_file) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
             </div>
-            <p class="pointer-events-none mt-1 block truncate text-xs font-medium text-gray-500">{{ $announce->file1 }}</p>
+            <p class="pointer-events-none mt-1 block truncate text-xs font-medium text-gray-500">{{ $announce->second_file }}</p>
         </li>
 
         @if ($isVisibleImageModal2)
@@ -50,7 +50,7 @@
                                 </svg>
                             </button>
                             <div class="bg-white">
-                                <img src="{{ asset('storage/' . $announce->file2) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
+                                <img src="{{ asset('storage/images/announce/' . $announce->second_file) }}" class="pointer-events-none w-full h-full object-cover group-hover:opacity-75">
                             </div>
                         </div>
                     </div>

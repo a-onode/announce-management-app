@@ -31,7 +31,7 @@
                 </a>
             </div>
 
-            @if ($announce->file1 || $announce->file2)
+            @if ($announce->first_file || $announce->second_file)
                 @livewire('images', ['announce' => $announce])
             @endif
 

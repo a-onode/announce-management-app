@@ -65,14 +65,14 @@ class AnnounceController extends Controller
             'is_visible' => intval($request->input('isVisible')),
         ];
 
-        if (!is_null($request->file('file1'))) {
-            $fileNameToStore = ImageService::upload($request->file('file1'), 'announce');
-            $data['file1'] = $fileNameToStore;
+        if (!is_null($request->file('firstFile'))) {
+            $fileNameToStore = ImageService::upload($request->file('firstFile'), 'announce');
+            $data['first_file'] = $fileNameToStore;
         }
 
-        if (!is_null($request->file('file2'))) {
-            $fileNameToStore = ImageService::upload($request->file('file2'), 'announce');
-            $data['file2'] = $fileNameToStore;
+        if (!is_null($request->file('secondFile'))) {
+            $fileNameToStore = ImageService::upload($request->file('secondFile'), 'announce');
+            $data['second_file'] = $fileNameToStore;
         }
 
         if (!is_null($request->input('url'))) {
